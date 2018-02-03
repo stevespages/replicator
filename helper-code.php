@@ -254,42 +254,6 @@ function showForm($action, $form_array)	{
 	return $form;
 }
 
-
-function replicateForm($action, $form_array)	{
-	$form = "<form method='post' action=".$action.">";
-	foreach($form_array as $key => $value) {
-		$form .= "<p><label>".$form_array[$key]['form_label'];
-		if($form_array[$key]['type']=='select') {
-			$form .= " <select name='".$form_array[$key]['name']."'>";
-			foreach($form_array[$key]['options'] as $key_2 => $value_2) {
-				$form .= "<option value=".$key_2.">".$value_2."</option>";
-			}
-			$form .= "</select";
-		} else {
-			
-			/*
-			$form .= " <input name='".$form_array[$key]['name']
-				."' type='".$form_array[$key]['type']
-				."' value='".$form_array[$key]['value']
-				."'";
-			*/
-			
-			$form .= ' <input name="'.$form_array[$key]["name"]
-				.'" type="'.$form_array[$key]["type"]
-				.'" value="'.$form_array[$key]["value"]
-				.'"';
-				
-			if($form_array[$key]['required']=='required') {
-				$form .=" required";
-			}				
-		}
-	$form .=	"></label> ".$form_array[$key]['error_mssg']."</p>";
-	}
-	$form .= "<input type='submit'> <a href='index.php'> Cancel </a></form></br>";
-	return $form;
-}
-
-
 // pasted in from index.php
 function showSnippets($statement, $editable) {
 	$snippets = "<div><table border=1>";
@@ -323,6 +287,29 @@ function createTable($statement, $editable=null)
 	}
 	$table .= "</table></div>";
 	return $table;
+}
+
+// derived from createTable()
+function replicateFormArray($statement, $editable=null)
+{
+	$replicated_form_array = '$form_array = array();';
+	/*
+	while($row = $statement->fetchObject())
+	{
+		$table .= "<tr>";
+		foreach($row as $key => $value)
+		{
+			$table .= "<td>".$value."</td>";
+		}
+		if($editable) {
+			$table .= "<td><a href='index.php?pg=edit&id=".$row->id."'>Edit?</a></td>";
+			$table .= "<td><a href='index.php?pg=delete&id=".$row->id."'>Delete?</a></td>";
+		}
+		$table .= "</tr>";
+	}
+	*/
+	$replicated_form_array .= "</table></div>";
+	return $replicated_form_array;
 }
 
 //$db = new PDO("mysql:host=localhost;dbname=snippets;charset=utf8mb4", "root", "");// now in config.php
@@ -373,17 +360,17 @@ If ($_SERVER['REQUEST_METHOD'] != 'POST' AND isset($_GET['id']))	{
 			}
 }
 
-$snippet_form = replicateForm($action, $snippet_form_array);
-$snippet_form_2 = replicateForm($action, $snippet_form_array_2);
+$snippet_form = showForm($action, $snippet_form_array);
 $statement = $table->getAll('snip');
 //$editable = true; // this is an optional argument for createTable() so the displayed info will be editable or not.
 //$snippets = showSnippets($statement, $editable);
-$snippet_table = createTable($statement, false);
+//$snippet_table = createTable($statement, false);
+$replicated_snippet_form_array = replicateFormArray($statement, false);
 
 //var_dump($row);
 
 echo '<!DOCTYPE html><html><head><meta charset="utf-8" /><title></title></head>';
 //echo '<p>'.$row.'</p>';
-echo $snippet_form.'</br>'.$snippet_form_2;
+echo $snippet_form.'</br>'.$replicated_snippet_form_array;
 //echo '</br>'.$snippet_table.'</br>';
 echo '<body></body></html>';
