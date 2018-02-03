@@ -10,24 +10,24 @@
 $snippet_form_array = array ( 
 			"replicator" => array (
 						"name" => "replicator",
-						"required" => "required",
+						"required" => "",
 						"value" => "",
 						"error_mssg" => "",
-						"form_label" => "",
+						"form_label" => "ask",
 						"type" => "text",
-						"validate" => "unique"
+						"validate" => ""
 						),
 );
 
 $snippet_form_array_2 = array ( 
 			"replicator" => array (
 						"name" => "replicator",
-						"required" => "required",
+						"required" => "",
 						"value" => "",
 						"error_mssg" => "",
-						"form_label" => "",
+						"form_label" => "ask_2",
 						"type" => "text",
-						"validate" => "unique"
+						"validate" => ""
 						),
 );
 

@@ -1,12 +1,9 @@
 <?php
 
+include_once 'helper-code.php';
 
+$i = 1;
 
-// primary keys are the values of the name attributes of the form input elements...
-// ... and the names of the corresponding columns in a MySQL (or other) table.
-// Most but not necessarily all the secondary keys are required to avoid an 'undefined index' error.
-// Implement radio controlls
-// Implement a generic solution for attributes of html elements no matter what they are called
 $snippet_form_array_0 = array ( 
 			"replicator" => array (
 						"name" => "replicator",
@@ -31,4 +28,13 @@ $snippet_form_array_1 = array (
 						),
 );
 
-include_once "helper-code.php";
+$j=0;
+while($j<$i+1)
+{
+	$name = 'snippet_form_array_'.$j;
+	$display = showForm($action, $$name);
+	//$display[] = $$name;
+	$j=$j+1;
+}
+
+var_dump($display);
