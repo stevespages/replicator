@@ -67,8 +67,12 @@ $display = $snippet_form;
 }
 
 
+
 echo '<!DOCTYPE html><html><head><meta charset="utf-8" /><title></title></head>';
 //echo '<p>'.$row.'</p>';
-echo $display.'</br>'.$i;
+echo '<pre>';
+var_dump($display);
+echo '</pre>';
+//echo $display.'</br>'.$i;
 //echo '</br>'.$snippet_table.'</br>';
 echo '<body></body></html>';

@@ -1,9 +1,9 @@
 <?php
 
-include_once 'helper-code.php';
+
 
 $i = 1;
-
+$action = 'index.php?i='.$i;
 $snippet_form_array_0 = array ( 
 			"replicator" => array (
 						"name" => "replicator",
@@ -28,11 +28,14 @@ $snippet_form_array_1 = array (
 						),
 );
 
+
+include_once 'helper-code.php';
+
 $j=0;
 while($j<$i+1)
 {
 	$name = 'snippet_form_array_'.$j;
-	$display = showForm($action, $$name);
+	$display[] = showForm($action, $$name);
 	//$display[] = $$name;
 	$j=$j+1;
 }

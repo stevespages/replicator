@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 function showForm($action, $form_array)	{
 	$form = "<form method='post' action=".$action.">";
 	foreach($form_array as $key => $value) {
@@ -37,11 +34,24 @@ function showForm($action, $form_array)	{
 	return $form;
 }
 
-If ($_SERVER['REQUEST_METHOD'] == 'POST')	{
-	
-	$i = $_GET['i'] + 1;
-	
-	$snippet_form_array = '$snippet_form_array_'.$i.' = array("replicator" => array (
+
+$i = 1;
+$action = 'index.php?i='.$i;
+
+$snippet_form_array_0 = array ( 
+			"replicator" => array (
+						"name" => "replicator",
+						"required" => "",
+						"value" => "",
+						"error_mssg" => "",
+						"form_label" => "ask",
+						"type" => "text",
+						"validate" => ""
+						),
+);
+
+$snippet_form_array_1 = array ( 
+			"replicator" => array (
 						"name" => "replicator",
 						"required" => "",
 						"value" => "",
@@ -49,28 +59,29 @@ If ($_SERVER['REQUEST_METHOD'] == 'POST')	{
 						"form_label" => "ask_2",
 						"type" => "text",
 						"validate" => ""
-						));';
-	$j=0;
+						),
+);
+
+$name = $snippet_form_array_0;
+
+var_dump($snippet_form_array_0);
+
+echo '</br>';
+
+echo $$name;
+
+//$f = showForm($action, $$name);
+//echo $f;
+
+/*
+$j=0;
 while($j<$i+1)
 {
 	$name = 'snippet_form_array_'.$j;
-	$display[] = $$name;
+	$display[] = showForm($action, $$name);
+	//$display[] = $$name;
 	$j=$j+1;
 }
-}
 
-If ($_SERVER['REQUEST_METHOD'] != 'POST')	{
-$i=0;
-$action = 'index.php?i='.$i;
-$snippet_form = showForm($action, $snippet_form_array_0);
-$display = $snippet_form;
-}
-
-
-
-echo '<!DOCTYPE html><html><head><meta charset="utf-8" /><title></title></head>';
-//echo '<p>'.$row.'</p>';
 var_dump($display);
-//echo $display.'</br>'.$i;
-//echo '</br>'.$snippet_table.'</br>';
-echo '<body></body></html>';
+*/
