@@ -71,7 +71,7 @@ $display = $snippet_form;
 echo '<!DOCTYPE html><html><head><meta charset="utf-8" /><title></title></head>';
 //echo '<p>'.$row.'</p>';
 echo '<pre>';
-var_dump($display);
+echo $display;
 echo '</pre>';
 //echo $display.'</br>'.$i;
 //echo '</br>'.$snippet_table.'</br>';

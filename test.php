@@ -26,4 +26,6 @@ $a = 'hello';
 $$a = 'world';
 echo $hello;
 
-
+$hello = 'world';
+$a = 'hello';
+echo $$a;

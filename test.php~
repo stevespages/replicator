@@ -1,5 +1,5 @@
 <?php
-
+/*
 $i = 2;
 
 $x_0 = 'zero';
@@ -20,13 +20,10 @@ while($j < $i+1) {
 
 var_dump($display);
 
-/*
-$display[] = $x_0;
-$display[] = $x_1;
-$display[] = $x_2;
-var_dump($display);
 */
 
 $a = 'hello';
 $$a = 'world';
 echo $hello;
+
+
